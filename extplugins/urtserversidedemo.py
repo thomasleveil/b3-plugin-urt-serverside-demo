@@ -144,7 +144,7 @@ class UrtserversidedemoPlugin(Plugin):
             return
 
         if data == 'all':
-            self.start_recording_all_players()
+            self.start_recording_all_players(admin=client)
             return
 
         targetted_player = self._adminPlugin.findClientPrompt(data, client)
