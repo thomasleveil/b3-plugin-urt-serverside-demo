@@ -51,14 +51,15 @@ Else, stops all currently recording demos.
 Support
 -------
 
-During the development stage, discussion is held on the [urbanterror.info forums](http://www.urbanterror.info/forums/topic/28665-urt-serverside-demo-recording-bigbrotherbot-plugin/).
+If you found a bug or have a suggestion for this plugin, please report it on the B3 forums at http://forum.bigbrotherbot.net/plugins-by-courgette/server-side-demo-(urt)/
 
 
 
 Changelog
 ---------
 
-### 1.0 <small>2012-05-23</small>
+### 1.0
+2012-05-23
 * add commands __!startserverdemo__ and __!stopserverdemo__
 * able to auto start demo of connecting players if `!startserverdemo` all was called
 
