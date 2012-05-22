@@ -68,3 +68,6 @@ Changelog
 
 [B3]: http://www.bigbrotherbot.net/ "BigBrotherBot (B3)"
 [1]: http://www.urbanterror.info/forums/topic/28657-server-side-demo-recording/ "Urban Terror forums"
+
+
+[![Build Status](https://secure.travis-ci.org/courgette/b3-plugin-urt-serverside-demo.png?branch=master)](http://travis-ci.org/courgette/b3-plugin-urt-serverside-demo)
