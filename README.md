@@ -15,7 +15,7 @@ Requirements
 Download
 --------
 
-no stable release for this plugin yet. Adventurers can have a look at the [github repository][2].
+Latest version available at https://github.com/courgette/b3-plugin-urt-serverside-demo/zipball/master
 
 
 Installation
@@ -24,8 +24,9 @@ Installation
 * copy the urtserversidedemo.py file into b3/extplugins
 * copy the plugin_urtserversidedemo.ini file into your config directory
 * add to the plugins section of your main b3 config file:
-    <plugin name="votemapbf3" config="@b3/extplugins/conf/plugin_votemapbf3.ini" />
-
+```
+    <plugin name="urtserversidedemo" config="@b3/extplugins/conf/plugin_urtserversidedemo.ini" />
+```
 
 Usage
 -----
@@ -67,4 +68,3 @@ Changelog
 
 [B3]: http://www.bigbrotherbot.net/ "BigBrotherBot (B3)"
 [1]: http://www.urbanterror.info/forums/topic/28657-server-side-demo-recording/ "Urban Terror forums"
-[2]: https://github.com/courgette/b3-plugin-urt-serverside-demo "github repository"
