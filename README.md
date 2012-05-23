@@ -31,7 +31,7 @@ Installation
 Usage
 -----
 
-#### !startserverdemo <player>
+#### !startserverdemo \<player\>
 
 Starts a server-side demo.
 
@@ -40,7 +40,7 @@ Else, starts recording a demo for the given player only.
 
 
 
-#### !stopserverdemo <player>
+#### !stopserverdemo \<player\>
 
 Stops recording a server-side demo.
 
