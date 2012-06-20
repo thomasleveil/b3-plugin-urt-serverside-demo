@@ -1,0 +1,124 @@
+<!doctype html>
+<!-- The Time Machine GitHub pages theme was designed and developed by Jon Rohan, on Feb 7, 2012. -->
+<!-- Follow him for fun. http://twitter.com/jonrohan. Tail his code on http://github.com/jonrohan -->
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+  <link rel="stylesheet" href="stylesheets/stylesheet.css" media="screen"/>
+  <link rel="stylesheet" href="stylesheets/pygment_trac.css"/>
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+  <script type="text/javascript" src="javascripts/script.js"></script>
+
+  <title>B3 plugin urt-serverside-demo</title>
+  <meta name="description" content="a BigBrotherBot plugin to take advantage of the Urban Terror server-side demo recording feature.">
+
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+
+</head>
+
+<body>
+
+  <div class="wrapper">
+    <header>
+      <h1 class="title">B3 plugin urt-serverside-demo</h1>
+    </header>
+    <div id="container">
+      <p class="tagline">a BigBrotherBot plugin to take advantage of the Urban Terror server-side demo recording feature.</p>
+      <div id="main" role="main">
+        <div class="download-bar">
+        <div class="inner">
+          <a href="https://github.com/courgette/b3-plugin-urt-serverside-demo/tarball/master" class="download-button tar"><span>Download</span></a>
+          <a href="https://github.com/courgette/b3-plugin-urt-serverside-demo/zipball/master" class="download-button zip"><span>Download</span></a>
+          <a href="https://github.com/courgette/b3-plugin-urt-serverside-demo" class="code">View B3 plugin urt-serverside-demo on GitHub</a>
+        </div>
+        <span class="blc"></span><span class="trc"></span>
+        </div>
+        <article class="markdown-body">
+          <p>Provides commands to control the game server side demo taking feature.
+For every server-side demo started, you will find in the B3 log a <em>INFO</em> line with demo filename, player name, player  guid and player ip.</p>
+
+<h2>Requirements</h2>
+
+<ul>
+<li>B3 v1.8.1 or later</li>
+<li>ioUrTded game server with server-side demo capabilities. See the official <a href="http://www.urbanterror.info/forums/topic/28657-server-side-demo-recording/" title="Urban Terror forums">Urban Terror forums</a>.</li>
+</ul><h2>Download</h2>
+
+<p>Latest version available at <a href="https://github.com/courgette/b3-plugin-urt-serverside-demo/zipball/master">https://github.com/courgette/b3-plugin-urt-serverside-demo/zipball/master</a></p>
+
+<h2>Installation</h2>
+
+<ul>
+<li>copy the urtserversidedemo.py file into b3/extplugins</li>
+<li>copy the plugin_urtserversidedemo.ini file into your config directory</li>
+<li>add to the plugins section of your main b3 config file:
+<code>
+&lt;plugin name="urtserversidedemo" config="@b3/extplugins/conf/plugin_urtserversidedemo.ini" /&gt;
+</code>
+</li>
+</ul><h2>Usage</h2>
+
+<h4>!startserverdemo &lt;player&gt;</h4>
+
+<p>Starts a server-side demo.</p>
+
+<p>If <em>player</em> is <code>all</code>, then all connected players will be recorded and future connecting players will also be recorded.
+Else, starts recording a demo for the given player only.</p>
+
+<h4>!stopserverdemo &lt;player&gt;</h4>
+
+<p>Stops recording a server-side demo.</p>
+
+<p>If <em>player</em> is <code>all</code>, then all currently recording server-side demos are stopped and future connecting players won't get automatically recorded.
+Else, stops all currently recording demos.</p>
+
+<h2>Support</h2>
+
+<p>If you found a bug or have a suggestion for this plugin, please report it on the B3 forums at <a href="http://forum.bigbrotherbot.net/plugins-by-courgette/server-side-demo-(urt)/">http://forum.bigbrotherbot.net/plugins-by-courgette/server-side-demo-(urt)/</a></p>
+
+<h2>Changelog</h2>
+
+<h3>1.0</h3>
+
+<p>2012-05-23</p>
+
+<ul>
+<li>add commands <strong>!startserverdemo</strong> and <strong>!stopserverdemo</strong>
+</li>
+<li>able to auto start demo of connecting players if <code>!startserverdemo</code> all was called</li>
+</ul><p><a href="http://travis-ci.org/courgette/b3-plugin-urt-serverside-demo"><img src="https://secure.travis-ci.org/courgette/b3-plugin-urt-serverside-demo.png?branch=master" alt="Build Status"></a></p>
+        </article>
+      </div>
+    </div>
+    <footer>
+      <div class="owner">
+      <p><a href="https://github.com/courgette" class="avatar"><img src="https://secure.gravatar.com/avatar/6d217ede7475f39f9e17032dd92748fc?s=30&amp;d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-140.png" width="48" height="48"/></a> <a href="https://github.com/courgette">courgette</a> maintains <a href="https://github.com/courgette/b3-plugin-urt-serverside-demo">B3 plugin urt-serverside-demo</a></p>
+
+
+      </div>
+      <div class="creds">
+        <small>This page generated using <a href="https://pages.github.com/">GitHub Pages</a><br/>theme by <a href="http://twitter.com/jonrohan/">Jon Rohan</a></small>
+      </div>
+    </footer>
+  </div>
+  <div class="current-section">
+    <a href="#top">Scroll to top</a>
+    <a href="https://github.com/courgette/b3-plugin-urt-serverside-demo/tarball/master" class="tar">tar</a><a href="https://github.com/courgette/b3-plugin-urt-serverside-demo/zipball/master" class="zip">zip</a><a href="" class="code">source code</a>
+    <p class="name"></p>
+  </div>
+
+            <script type="text/javascript">
+            var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+            document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+          </script>
+          <script type="text/javascript">
+            try {
+              var pageTracker = _gat._getTracker("UA-15621292-1");
+            pageTracker._trackPageview();
+            } catch(err) {}
+          </script>
+
+</body>
+</html>
