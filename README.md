@@ -62,7 +62,7 @@ Changelog
 ### 1.0
 2012-05-23
 * add commands __!startserverdemo__ and __!stopserverdemo__
-* able to auto start demo of connecting players if `!startserverdemo` all was called
+* able to auto start demo of connecting players if `!startserverdemo all` was called
 
 
 
