@@ -12,6 +12,7 @@ stopserverdemo = 20
 """
     def setUp(self):
         PluginTestCase.setUp(self)
+        self.p.onStartup()
 
         self.joe = FakeClient(self.console, name="Joe", guid="01230123012301230123", groupBits=1)
         self.joe.clearMessageHistory()
@@ -30,7 +31,7 @@ stopserverdemo = 20
 
         # THEN
         self.assertTrue(self.p.start_recording_player.called)
-        self.p.start_recording_player.assert_called_with(self.joe)
+        self.p.start_recording_player.assert_called_with(self.joe, None)
 
 
 

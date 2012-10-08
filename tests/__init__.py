@@ -44,7 +44,11 @@ class Iourt41TestCase(Iourt41_TestCase_mixin):
     def setUp(self):
         # create a Iourt41 parser
         self.parser_conf = XmlConfigParser()
-        self.parser_conf.loadFromString(r"""<configuration/>""")
+        self.parser_conf.loadFromString(r"""<configuration>
+                <settings name="server">
+                    <set name="game_log"/>
+                </settings>
+            </configuration>""")
         self.console = Iourt41Parser(self.parser_conf)
 
         self.console.write = Mock(name="write", side_effect=write)
@@ -56,12 +60,7 @@ class Iourt41TestCase(Iourt41_TestCase_mixin):
         self.adminPlugin.onStartup()
 
         # make sure the admin plugin obtained by other plugins is our admin plugin
-        def getPlugin(name):
-            if name == 'admin':
-                return self.adminPlugin
-            else:
-                return self.console.getPlugin(name)
-        self.console.getPlugin = getPlugin
+        when(self.console).getPlugin('admin').thenReturn(self.adminPlugin)
 
 
     def tearDown(self):
@@ -84,7 +83,6 @@ class PluginTestCase(Iourt41TestCase):
 startserverdemo
 1 commands
 """)
-        self.p.onStartup()
         logger = logging.getLogger('output')
         logger.setLevel(logging.NOTSET)
 

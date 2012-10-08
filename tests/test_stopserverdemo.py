@@ -10,6 +10,7 @@ stopserverdemo = 20
 """
     def setUp(self):
         PluginTestCase.setUp(self)
+        self.p.onStartup()
         self.moderator = FakeClient(self.console, name="Moderator", exactName="Moderator", guid="654654654654654654", groupBits=8)
         self.moderator.connects('0')
         self.moderator.clearMessageHistory()

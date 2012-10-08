@@ -48,6 +48,14 @@ If _player_ is `all`, then all currently recording server-side demos are stopped
 Else, stops all currently recording demos.
 
 
+#### HaxBusterUrt plugin
+
+This plugin can get notifications from the HaxBusterUrt plugin that a connecting player is suspected of cheating. By
+setting a value for `demo_duration` in the `haxbusterurt` section of your config file, demos will automatically be taken for
+such players.
+Of course you need to have the HaxBusterUrt plugin installed and loaded for this to work, and furthermore, you need to
+make sure that the HaxBusterUrt plugin is loaded **before** this plugin.
+
 
 Support
 -------
@@ -64,6 +72,11 @@ Changelog
 * add commands __!startserverdemo__ and __!stopserverdemo__
 * able to auto start demo of connecting players if `!startserverdemo` all was called
 
+### 2.0
+2012-10-08
+* when trying to start a demo on a player which is not fully connected, will wait and retry when the player joins
+* can detect the HaxBusterUrt plugin and auto-start demo for player suspected of cheating
+* support both demo file extensions : dm_68 and urtdemo
 
 
 [B3]: http://www.bigbrotherbot.net/ "BigBrotherBot (B3)"
@@ -71,3 +84,5 @@ Changelog
 
 
 [![Build Status](https://secure.travis-ci.org/courgette/b3-plugin-urt-serverside-demo.png?branch=master)](http://travis-ci.org/courgette/b3-plugin-urt-serverside-demo)
+
+[![Flattr this](http://api.flattr.com/button/flattr-badge-large.png "Flattr this")](https://flattr.com/submit/auto?user_id=tomdesinto&url=https://github.com/courgette/b3-plugin-urt-serverside-demo&title=b3-plugin-urt-serverside-demo&language=en&tags=github,BigBrotherBot&category=software)
