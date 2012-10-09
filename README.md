@@ -78,6 +78,10 @@ Changelog
 * can detect the HaxBusterUrt plugin and auto-start demo for player suspected of cheating
 * support both demo file extensions : dm_68 and urtdemo
 
+### 2.1
+2012-10-09
+* can detect the Follow plugin and auto-start demo for player found in the follow list. See http://forum.bigbrotherbot.net/releases/follow-users-plugin/
+
 
 [B3]: http://www.bigbrotherbot.net/ "BigBrotherBot (B3)"
 [1]: http://www.urbanterror.info/forums/topic/28657-server-side-demo-recording/ "Urban Terror forums"
