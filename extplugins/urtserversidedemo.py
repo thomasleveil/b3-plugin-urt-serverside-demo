@@ -23,7 +23,7 @@ from b3.plugin import Plugin
 from b3.events import EVT_CLIENT_DISCONNECT, EVT_CLIENT_AUTH, EVT_CLIENT_JOIN, EVT_STOP, EVT_EXIT, Event
 from b3.functions import minutesStr
 
-__version__ = '2.0'
+__version__ = '2.1'
 __author__ = 'Courgette'
 
 class UrtserversidedemoPlugin(Plugin):
@@ -32,6 +32,7 @@ class UrtserversidedemoPlugin(Plugin):
         self._re_startserverdemo_success = re.compile(r"""^startserverdemo: recording (?P<name>.+) to (?P<file>.+\.(?:dm_68|urtdemo))$""")
         self._adminPlugin = None
         self._haxbusterurt_demo_duration = 0 # if the haxbusterurt plugin is present, how long should last demo of cheaters
+        self._follow_demo_duration = 0 # if the follow plugin is present, how long should last demo of cheaters
         self._recording_all_players = False # if True, then connecting players will be recorded
         Plugin.__init__(self, console, config)
 
@@ -48,6 +49,7 @@ class UrtserversidedemoPlugin(Plugin):
         from the config need to be reset here.
         """
         self._load_config_haxbusterurt()
+        self._load_config_follow()
 
 
     def onStartup(self):
@@ -96,6 +98,21 @@ class UrtserversidedemoPlugin(Plugin):
             self.EVT_BAD_GUID = self.EVT_1337_PORT = None
 
 
+        # http://forum.bigbrotherbot.net/releases/follow-users-plugin/
+        self._follow_plugin = self.console.getPlugin('follow')
+        if self._follow_plugin:
+            self.info("Follow plugin found - we will auto record demos for followed players")
+
+            self.EVT_FOLLOW_CONNECTED = self.console.getEventID('EVT_FOLLOW_CONNECTED')
+            if self.EVT_FOLLOW_CONNECTED:
+                self.registerEvent(self.EVT_FOLLOW_CONNECTED)
+            else:
+                self.error("Could not register to Follow plugin EVT_FOLLOW_CONNECTED event. Make sure the Follow plugin is loaded before the UrTServerSideDemo plugin in your b3.xml")
+        else:
+            self.info("Follow plugin not found")
+
+
+
     def onEvent(self, event):
         """\
         Handle intercepted events
@@ -108,6 +125,8 @@ class UrtserversidedemoPlugin(Plugin):
             self.onEventBotStop()
         elif event.type in (self.EVT_BAD_GUID, self.EVT_1337_PORT):
             self.onHaxBusterUrTEvent(event.client)
+        elif event.type == self.EVT_FOLLOW_CONNECTED:
+            self.onFollowConnectedEvent(event.client)
 
 
     def disable(self):
@@ -150,6 +169,13 @@ class UrtserversidedemoPlugin(Plugin):
         else:
             self.info("[haxbusterurt] auto recording for %s min player %s on slot %s %s %s" % (self._haxbusterurt_demo_duration, client.name, client.cid, client.guid, client.ip))
             self._demo_manager.take_demo(client, duration=self._haxbusterurt_demo_duration * 60)
+
+    def onFollowConnectedEvent(self, client):
+        if self._recording_all_players:
+            self.info("[Follow] All players are currently being recorded, nothing to do")
+        else:
+            self.info("[Follow] auto recording for %s min player %s on slot %s %s %s" % (self._follow_demo_duration, client.name, client.cid, client.guid, client.ip))
+            self._demo_manager.take_demo(client, duration=self._follow_demo_duration * 60)
 
 
     ################################################################################################################
@@ -236,6 +262,14 @@ class UrtserversidedemoPlugin(Plugin):
         self.info('haxbusterurt demo_duration: %s minutes' % self._haxbusterurt_demo_duration)
 
 
+    def _load_config_follow(self):
+        try:
+            self._follow_demo_duration = self.config.getint('follow', 'demo_duration')
+        except Exception, err:
+            self.warning(err)
+        self.info('follow demo_duration: %s minutes' % self._follow_demo_duration)
+
+
     def start_recording_all_players(self, admin=None):
         self._recording_all_players = True
         rv = self.console.write("startserverdemo all")
@@ -274,10 +308,6 @@ class UrtserversidedemoPlugin(Plugin):
         if admin:
             admin.message(rv)
 
-
-    def isHaxbusterurtPluginActive(self):
-        plugin = self.console.getPlugin('haxbusterurt')
-        return plugin and plugin.working
 
 
 class DemoManager(object):

@@ -11,29 +11,6 @@ EVT_BAD_GUID = eventManager.createEvent('EVT_BAD_GUID', 'Bad guid detected')
 EVT_1337_PORT = eventManager.createEvent('EVT_1337_PORT', '1337 port detected')
 
 
-class Test_without_haxbusterurt(PluginTestCase):
-    CONF = """\
-[commands]
-startserverdemo = 20
-
-[haxbusterurt]
-demo_duration: 2
-"""
-
-    def setUp(self):
-        PluginTestCase.setUp(self)
-        eventManager = Events()
-        self.p.onLoadConfig()
-        self.p.onStartup()
-
-    def test_isHaxbusterurtPluginActive(self):
-        self.assertFalse(self.p.isHaxbusterurtPluginActive())
-
-    def test_register_events(self):
-        self.assertIn(EVT_BAD_GUID, self.p.events)
-        self.assertIn(EVT_1337_PORT, self.p.events)
-
-
 class HaxbusterurtPlugin():
     """
     dummy HaxbusterurtPlugin
@@ -63,12 +40,6 @@ demo_duration: 2
 
     def tearDown(self):
         PluginTestCase.tearDown(self)
-
-
-    def test_isHaxbusterurtPluginActive(self):
-        self.assertTrue(self.p.isHaxbusterurtPluginActive())
-        self.haxbusterurt.working = False
-        self.assertFalse(self.p.isHaxbusterurtPluginActive())
 
 
     def test_register_events(self):

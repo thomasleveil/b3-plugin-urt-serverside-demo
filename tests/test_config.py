@@ -92,3 +92,24 @@ demo_duration: f00
 """)
         self.p.onLoadConfig()
         self.assertEqual(0, self.p._haxbusterurt_demo_duration)
+
+
+
+class Test_follow(ConfTestCase):
+
+    def test_demo_duration_nominal(self):
+        self.conf.loadFromString("""
+[follow]
+demo_duration: 3
+""")
+        self.p.onLoadConfig()
+        self.assertEqual(3, self.p._follow_demo_duration)
+
+
+    def test_demo_duration_bad(self):
+        self.conf.loadFromString("""
+[follow]
+demo_duration: f00
+""")
+        self.p.onLoadConfig()
+        self.assertEqual(0, self.p._follow_demo_duration)
