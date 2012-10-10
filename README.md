@@ -56,6 +56,19 @@ such players.
 Of course you need to have the HaxBusterUrt plugin installed and loaded for this to work, and furthermore, you need to
 make sure that the HaxBusterUrt plugin is loaded **before** this plugin.
 
+See the HaxBusterUrt plugin at : http://forum.bigbrotherbot.net/downloads/?sa=view;down=61
+
+
+#### Follow plugin
+
+This plugin can get notifications from the Follow plugin when a player is found in the follow list. By
+setting a value for `demo_duration` in the `follow` section of your config file, demos will automatically be taken for
+such players.
+Of course you need to have the Follow plugin installed and loaded for this to work, and furthermore, you need to
+make sure that the HaxBusterUrt plugin is loaded **before** this plugin.
+
+See the Follow plugin at : http://forum.bigbrotherbot.net/downloads/?sa=view;down=52
+
 
 Support
 -------
