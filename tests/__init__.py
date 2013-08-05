@@ -11,6 +11,8 @@ from mockito.mockito import when
 from b3.config import XmlConfigParser, CfgConfigParser
 from b3.parsers.iourt41 import Iourt41Parser
 from b3.plugins.admin import AdminPlugin
+from b3 import __version__ as b3_version
+from b3.update import B3version
 from urtserversidedemo import UrtserversidedemoPlugin
 
 
@@ -52,8 +54,12 @@ class Iourt41TestCase(Iourt41_TestCase_mixin):
 
 
         # load the admin plugin
-        self.adminPlugin = AdminPlugin(self.console, '@b3/conf/plugin_admin.xml')
-        self.adminPlugin.onStartup()
+        if B3version(b3_version) >= B3version("1.10dev"):
+            admin_plugin_conf_file = '@b3/conf/plugin_admin.ini'
+        else:
+            admin_plugin_conf_file = '@b3/conf/plugin_admin.xml'
+        self.adminPlugin = AdminPlugin(self.console, admin_plugin_conf_file)
+    	self.adminPlugin.onStartup()
 
         # make sure the admin plugin obtained by other plugins is our admin plugin
         when(self.console).getPlugin('admin').thenReturn(self.adminPlugin)
