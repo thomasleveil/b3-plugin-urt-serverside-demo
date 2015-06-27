@@ -4,6 +4,9 @@ b3-plugin-urt-serverside-demo
 A [BigBrotherBot][B3] plugin to take advantage of the Urban Terror server-side demo recording feature.
 For every server-side demo started, you will find in the B3 log a _INFO_ line with demo filename, player name, player guid and player ip.
 
+******
+*NOTE: since B3 v1.10.1 beta this plugin has been included in the standard plugins set, thus all patches and updates will be performed in the official B3 repository.*
+******
 
 Requirements
 ------------
